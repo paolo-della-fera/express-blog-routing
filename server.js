@@ -7,6 +7,7 @@ const postsRouter = require('./routes/posts');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.listen(PORT, () => {
     console.log(`Server del mio blog in ascolto sulla porta http://127.0.0.1:${PORT}`);
 });

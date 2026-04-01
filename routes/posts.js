@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const posts = [
+let posts = [
     {
         id: 1,
         title: 'Benvenuto al mio blog',
@@ -51,7 +51,7 @@ router.get('/:id', (req, res) => {
     console.log(req.params);
     console.log(req.params.id);
 
-    const post = posts.find(p => p.id === parseInt(req.params.id)); 
+    const post = posts.find(post => post.id === parseInt(req.params.id)); 
 
     if (post) {
         res.json({ post });
@@ -81,6 +81,8 @@ router.patch('/:id', (req, res) => {
 
 // Destroy
 router.delete('/:id', (req, res) => {
+    posts = posts.filter(post => post.id !== parseInt(req.params.id));
+    
     res.send(`Cancellazione del post ${req.params.id}`);
 });
 
